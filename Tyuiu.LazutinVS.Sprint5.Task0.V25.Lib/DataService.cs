@@ -2,7 +2,7 @@
 
 namespace Tyuiu.LazutinVS.Sprint5.Task0.V25.Lib
 {
-    public class DataService
+    public class DataService : ISprint5Task0V25
     {
         public string SaveToFileTextData(int x)
         {
