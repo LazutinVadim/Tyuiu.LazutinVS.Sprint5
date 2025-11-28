@@ -8,16 +8,21 @@ internal class Program
         //DataService ds = new DataService();
         //Console.WriteLine("Значение выражения: " + File.ReadAllText(ds.SaveToFileTextData(x)));
 
-        int[,] array = { { 6, 9, 4 }, { 7, 2, 4 }, { 4, 8, 3 } };
-        int rowSum = 0;
+        string outputFile = "OutPutFileTask3.bin";
+        double x1 = 0;
+        double result1 = Math.Pow(x1,4) - 2 * Math.Pow(x1,3) + 3 * Math.Pow(x1,2) - 4 * x1 + 5;
 
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            rowSum += array[1, j];
+        using (BinaryWriter writer = new BinaryWriter(File.Open(outputFile, FileMode.Create))) {
+            writer.Write(result1);
         }
 
-        File.WriteAllText("OutPutFileTask2.csv", rowSum.ToString());
-        string fullPath = Path.GetFullPath("OutPutFileTask2.csv");
-        Console.WriteLine(fullPath);
+        using (BinaryReader reader = new BinaryReader(File.OpenRead(outputFile)))
+        {
+            double valueFromFile = reader.ReadDouble();
+            Console.WriteLine($"Значение из файла: {valueFromFile}");  // ← будет 4
+        }
+
+        //string fullPath = Path.GetFullPath("OutPutFileTask3.bin");
+        //Console.WriteLine(fullPath);
     }
 }
