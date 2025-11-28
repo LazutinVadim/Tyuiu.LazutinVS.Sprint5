@@ -8,19 +8,25 @@ internal class Program
         //DataService ds = new DataService();
         //Console.WriteLine("Значение выражения: " + File.ReadAllText(ds.SaveToFileTextData(x)));
 
-        string outputFile = "OutPutFileTask3.bin";
-        double x1 = 0;
-        double result1 = Math.Pow(x1,4) - 2 * Math.Pow(x1,3) + 3 * Math.Pow(x1,2) - 4 * x1 + 5;
+        string content = File.ReadAllText(@"C:\DataSprint5\InPutDataFileTask4V0.txt");
+        string newContent = "";
 
-        using (BinaryWriter writer = new BinaryWriter(File.Open(outputFile, FileMode.Create))) {
-            writer.Write(result1);
-        }
-
-        using (BinaryReader reader = new BinaryReader(File.OpenRead(outputFile)))
+        foreach (char c in content)
         {
-            double valueFromFile = reader.ReadDouble();
-            Console.WriteLine($"Значение из файла: {valueFromFile}");  // ← будет 4
+            if (!char.IsDigit(c))
+            {
+                newContent += c;
+            }
         }
+
+        File.WriteAllText(@"C:\DataSprint5\InPutDataFileTask4V0.txt", newContent);
+        Console.WriteLine(String.Join("\n", newContent));
+
+        //using (BinaryReader reader = new BinaryReader(File.OpenRead(outputFile)))
+        //{
+        //    double valueFromFile = reader.ReadDouble();
+        //    Console.WriteLine($"Значение из файла: {valueFromFile}");  // ← будет 4
+        //}
 
         //string fullPath = Path.GetFullPath("OutPutFileTask3.bin");
         //Console.WriteLine(fullPath);

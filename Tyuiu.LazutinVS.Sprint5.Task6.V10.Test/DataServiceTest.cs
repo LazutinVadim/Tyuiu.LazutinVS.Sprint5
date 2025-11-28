@@ -1,0 +1,13 @@
+﻿using Tyuiu.LazutinVS.Sprint5.Task6.V10.Lib;
+
+namespace Tyuiu.LazutinVS.Sprint5.Task6.V10.Test
+{
+    [TestClass]
+    public sealed class DataServiceTest
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
+    }
+}
