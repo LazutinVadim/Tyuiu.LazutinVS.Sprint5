@@ -9,18 +9,8 @@ internal class Program
         //Console.WriteLine("Значение выражения: " + File.ReadAllText(ds.SaveToFileTextData(x)));
 
         string content = File.ReadAllText(@"C:\DataSprint5\InPutDataFileTask4V0.txt");
-        string newContent = "";
-
-        foreach (char c in content)
-        {
-            if (!char.IsDigit(c))
-            {
-                newContent += c;
-            }
-        }
-
-        File.WriteAllText(@"C:\DataSprint5\InPutDataFileTask4V0.txt", newContent);
-        Console.WriteLine(String.Join("\n", newContent));
+        content = content.Replace("h", "#");
+        Console.WriteLine(String.Join("\n", content));
 
         //using (BinaryReader reader = new BinaryReader(File.OpenRead(outputFile)))
         //{
