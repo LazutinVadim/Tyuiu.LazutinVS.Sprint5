@@ -8,19 +8,16 @@ internal class Program
         //DataService ds = new DataService();
         //Console.WriteLine("Значение выражения: " + File.ReadAllText(ds.SaveToFileTextData(x)));
 
-        double start = -11, end = -9, step = 1;
-        string outputFile = "OutPutFileTask1.txt";
-        for (double x = start; x <= end; x += step)
+        int[,] array = { { 6, 9, 4 }, { 7, 2, 4 }, { 4, 8, 3 } };
+        int rowSum = 0;
+
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            double result = 2 * x - 3 * Math.Pow(x, 2) - 24;
-            if (double.IsInfinity(result) || double.IsNaN(result)) 
-            {
-                result = 0;
-            }
-            result = Math.Round(result,2);
-            File.AppendAllText(outputFile, $"{result}\n");
-            Console.WriteLine($"{result}");
+            rowSum += array[1, j];
         }
 
+        File.WriteAllText("OutPutFileTask2.csv", rowSum.ToString());
+        string fullPath = Path.GetFullPath("OutPutFileTask2.csv");
+        Console.WriteLine(fullPath);
     }
 }
